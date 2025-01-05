@@ -1,19 +1,23 @@
 #! /usr/bin/env python3
 import re
 
-sample = "232.113.411.115"
 
 def main() -> None:
-    IP_Address : str = None
-    
-# r'\d{1,3}[.]\d{1,3}[.]\d{1,3}[.]\d{1,3}'
-pattern  = re.compile(r'\d{1,3}[.]\d{1,3}[.]\d{1,3}[.]\d{1,3}')
-matches = pattern.match(sample)
+    IP_Address: str = None
+    pattern: str = re.compile(r"\d{1,3}[.]\d{1,3}[.]\d{1,3}[.]\d{1,3}")
 
-if matches == None:
-    print("false")
+    IP_Address = input("Please enter IPv4 address for classification: ")
 
-print("true")
+    result = pattern.match(IP_Address)
+
+    if is_valid_address(result):
+        print("A match")
+    else:
+        print("Entry not accepted")
+
+
+def is_valid_address(result: float) -> bool:
+    return bool(result)
 
 
 if __name__ == "__main__":
