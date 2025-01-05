@@ -24,16 +24,37 @@ import sys
 
 
 def main() -> None:
-    IP_Address: str = None
+    ip_Address: str = None
+    ip_oct: list = None
     pattern: str = re.compile(r"\d{1,3}[.]\d{1,3}[.]\d{1,3}[.]\d{1,3}")
 
-    IP_Address = input("Please enter IPv4 address for classification: ")
-    print(IP_Address)
-
-    result = pattern.match(IP_Address)
+    ip_Address = input("Please enter IPv4 address for classification: ")
+    result = pattern.match(ip_Address)
 
     if is_valid_address(result):
-        print("A match")
+        check_boundaries: bool = False
+
+        ip_oct = list(map(int, ip_Address.split(".")))
+        check_boundaries = len([x for x in ip_oct if x >= 256]) == 0
+
+        if check_boundaries is False:
+            exit_program()
+
+        if ip_oct[0] <= 127 and ip_oct[1] <= 255:
+            print(f"{ip_Address} --> Belongs to Class A")
+        elif ip_oct[0] >= 128 and (ip_oct[0] <= 191 and ip_oct[1] <= 255):
+            print(f"{ip_Address} --> Belongs to Class B")
+        elif (
+            ip_oct[0] >= 192
+            and (ip_oct[0] <= 223 and ip_oct[1] <= 255)
+            and ip_oct[2] <= 255
+        ):
+            print(f"{ip_Address} --> Belongs to Class C")
+        elif ip_oct[0] >= 224 and ip_oct[0] < 240:
+            print(f"{ip_Address} --> Belongs to Class D")
+        else:
+            print(f"{ip_Address} --> Belongs to Class E")
+
     else:
         exit_program()
 
