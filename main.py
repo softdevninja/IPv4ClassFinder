@@ -4,7 +4,8 @@
 """
 Requesting IPv4 Address to get classification based on range. 
 
-References: 
+References:
+    https://www.geeksforgeeks.org/how-to-calculate-a-subnet-mask-from-ip-address/, 
     https://www.meridianoutpost.com/resources/articles/IP-classes.php
 
 Example:

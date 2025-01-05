@@ -1,6 +1,7 @@
 ## IPv4ClassFinder
 
-Ref: https://www.meridianoutpost.com/resources/articles/IP-classes.php
+Ref: https://www.meridianoutpost.com/resources/articles/IP-classes.php,
+     https://www.geeksforgeeks.org/how-to-calculate-a-subnet-mask-from-ip-address/
 Purpose: Write a script using Regex to figure out which class an IPv4 Address belongs. Range includes Private & public addresses. 
 
 Examples: 
