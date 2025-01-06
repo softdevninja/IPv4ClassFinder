@@ -24,6 +24,13 @@ import sys
 
 
 def main() -> None:
+    """
+    Performs 2 types of condition checks before serving a result.
+    - Checks to see if the regex pattern matches user input
+    - Checks to make sure the value of each octet does not exceed 8 bits
+
+    Returns: None
+    """
     ip_Address: str = None
     ip_oct: list = None
     pattern: str = re.compile(r"\d{1,3}[.]\d{1,3}[.]\d{1,3}[.]\d{1,3}")
@@ -60,10 +67,25 @@ def main() -> None:
 
 
 def is_valid_address(result: float) -> bool:
+    """
+    Checks to see if regex returned a positive match.
+
+    Args:
+        result (float): Represents the result from regex.
+
+    Returns:
+        bool: Returns true if pattern is found
+    """
     return bool(result)
 
 
 def exit_program() -> None:
+    """
+    Using OS module, gracefully exit the application.
+
+    Returns:
+        None:
+    """
     print(f"Entry not accepted. Terminating program, good bye!.")
     sys.exit(0)
 
